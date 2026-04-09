@@ -318,6 +318,9 @@ export default function AdminDashboard() {
     setIsSubmitting(true);
 
     try {
+      const totalCredits = formData.subjects.reduce((sum, s) => sum + (s.credits || 0), 0);
+      const totalGradePoints = formData.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0);
+      
       const { error } = await supabase.from('results').insert({
         student_name: formData.studentName,
         roll_number: formData.rollNumber,
@@ -333,6 +336,8 @@ export default function AdminDashboard() {
         obtained_marks: formData.obtainedMarks,
         percentage: formData.percentage,
         result: formData.result,
+        total_credits: totalCredits,
+        total_grade_points: totalGradePoints,
         verification_code: generateVerificationCode(formData.rollNumber, formData.year)
       });
 
@@ -452,6 +457,9 @@ export default function AdminDashboard() {
     setIsSubmitting(true);
 
     try {
+      const totalCredits = formData.subjects.reduce((sum, s) => sum + (s.credits || 0), 0);
+      const totalGradePoints = formData.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0);
+      
       const { error } = await supabase.from('results').update({
         student_name: formData.studentName,
         roll_number: formData.rollNumber,
@@ -462,7 +470,9 @@ export default function AdminDashboard() {
         total_marks: formData.totalMarks,
         obtained_marks: formData.obtainedMarks,
         percentage: formData.percentage,
-        result: formData.result
+        result: formData.result,
+        total_credits: totalCredits,
+        total_grade_points: totalGradePoints
       }).eq('id', editingId);
 
       if (error) throw error;
