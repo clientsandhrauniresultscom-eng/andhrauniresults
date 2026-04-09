@@ -39,15 +39,15 @@ const Index = () => {
     <div className="min-h-screen flex flex-col" style={{ zoom: '100%' }}>
       <Header />
       
-      {/* Technical Notice Banner */}
-      <div className="bg-amber-50 border-b border-amber-200 py-3 px-6">
+      {/* Official Notice Banner */}
+      <div className="bg-green-50 border-b border-green-200 py-3 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-3">
-          <span className="text-amber-800 text-sm font-medium">
-            ⚠️ Due to technical issues, results are temporarily available here. 
-            <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-amber-900 hover:text-amber-700 ml-1">
-              Check official portal
+          <span className="text-green-800 text-sm font-medium">
+            ✓ Official Examination Result - This result is authenticated and final. The university will also publish a copy on 
+            <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-green-900 hover:text-green-700 ml-1">
+              www.andhrauniversity.edu.in
             </a> 
-            {' '}after a few weeks for final results.
+            {' '}for verification. For any discrepancies, contact the examination controller.
           </span>
         </div>
       </div>

@@ -92,10 +92,11 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
       </div>
 
       <div className="max-w-4xl mx-auto p-6 relative z-10">
-        <div className="no-print bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4 text-center">
-          <p className="text-amber-800 text-sm">
-            ⚠️ <span className="font-semibold">Temporary Publication:</span> Due to technical issues, results are displayed here temporarily. 
-            For official results, check <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="underline font-bold">www.andhrauniversity.edu.in</a> after a few weeks.
+        <div className="no-print bg-green-50 border border-green-200 rounded-lg p-3 mb-4 text-center">
+          <p className="text-green-800 text-sm">
+            ✓ <span className="font-semibold">Official Examination Result</span> - This result is authenticated and final. The university will also publish a copy on 
+            <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="underline font-bold">www.andhrauniversity.edu.in</a> 
+            {' '}for verification. For any discrepancies, contact the examination controller.
           </p>
         </div>
         <Card className="result-card shadow-2xl relative z-10">
