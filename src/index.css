@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --deep-red: 0 100% 27.3%;
+    --golden-yellow: 48 100% 50%;
+    --maroon-brown: 4 37.8% 25.1%;
+    --university-white: 0 0% 100%;
+    --dark-grey: 0 0% 13.3%;
+    --medium-grey: 0 0% 33.3%;
+
+    --background: var(--university-white);
+    --foreground: var(--dark-grey);
+
+    --card: var(--university-white);
+    --card-foreground: var(--dark-grey);
+
+    --popover: var(--university-white);
+    --popover-foreground: var(--dark-grey);
+
+    --primary: var(--deep-red);
+    --primary-foreground: var(--university-white);
+
+    --secondary: var(--golden-yellow);
+    --secondary-foreground: var(--dark-grey);
+
+    --muted: 0 0% 96%;
+    --muted-foreground: var(--medium-grey);
+
+    --accent: var(--maroon-brown);
+    --accent-foreground: var(--university-white);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--university-white);
+
+    --border: var(--maroon-brown);
+    --input: 0 0% 95%;
+    --ring: var(--deep-red);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: var(--dark-grey);
+    --foreground: var(--university-white);
+
+    --card: var(--dark-grey);
+    --card-foreground: var(--university-white);
+
+    --popover: var(--dark-grey);
+    --popover-foreground: var(--university-white);
+
+    --primary: var(--deep-red);
+    --primary-foreground: var(--university-white);
+
+    --secondary: var(--golden-yellow);
+    --secondary-foreground: var(--dark-grey);
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: var(--maroon-brown);
+    --accent-foreground: var(--university-white);
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--university-white);
+
+    --border: var(--maroon-brown);
+    --input: 0 0% 25%;
+    --ring: var(--deep-red);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  .university-gradient {
+    background: linear-gradient(135deg, hsl(var(--deep-red)) 0%, hsl(var(--maroon-brown)) 100%);
+  }
+
+  .watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background-image: url('/lovable-uploads/1985a4f2-89fc-4924-9d69-0b6204adfaf4.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .scroll-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .scroll-marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 30s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translate3d(100%, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
+
+  .result-card {
+    background: linear-gradient(to bottom, hsl(var(--university-white)) 0%, hsl(var(--muted)) 100%);
+    border: 2px solid hsl(var(--maroon-brown));
+  }
+
+  .watermark-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 100px,
+      rgba(139, 0, 0, 0.03) 100px,
+      rgba(139, 0, 0, 0.03) 150px
+    );
+  }
+
+  .watermark-background::before {
+    content: "UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA UNIVERSITY ANDHRA ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(139, 0, 0, 0.05);
+    line-height: 60px;
+    letter-spacing: 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .watermark {
+      opacity: 0.05 !important;
+    }
+
+    .watermark-background {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 1 !important;
+    }
+
+    .watermark-background::before {
+      color: rgba(139, 0, 0, 0.08) !important;
+      font-size: 20px !important;
+      line-height: 50px !important;
+    }
+    
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    
+    body::before {
+      display: block !important;
+      opacity: 0.06 !important;
+      z-index: 1 !important;
+    }
+    
+    .result-card {
+      background: white !important;
+      border: 2px solid #5A2A27 !important;
+      box-shadow: none !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    @page {
+      margin: 0.5in;
+      size: A4;
+    }
+  }
+}
