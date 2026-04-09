@@ -147,15 +147,17 @@ const ResultLookup = ({ onResultFound }: ResultLookupProps) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-200px)] flex items-center justify-center p-6">
-      <Card className="w-full max-w-md result-card shadow-xl">
-        <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-2xl font-bold text-primary flex items-center justify-center gap-2">
-            <Search className="h-6 w-6" />
-            Result Lookup
+    <div className="flex items-center justify-center p-6">
+      <Card className="w-full max-w-md result-card shadow-2xl border-2 border-accent/30">
+        <CardHeader className="text-center space-y-3 pb-6">
+          <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center">
+            <Search className="h-8 w-8 text-accent" />
+          </div>
+          <CardTitle className="text-2xl font-bold text-primary">
+            Check Your Result
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            Enter your credentials to view examination results
+            Enter your credentials to view your examination results
           </CardDescription>
         </CardHeader>
         

@@ -1,37 +1,58 @@
-import { Shield, Lock } from "lucide-react";
+import { Shield, Lock, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-accent text-accent-foreground py-8 px-6 mt-auto">
+    <footer className="bg-accent text-accent-foreground py-12 px-6 mt-auto">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-6 mb-6">
-          <div>
-            <h3 className="font-bold text-lg mb-3">Andhra University</h3>
-            <p className="text-sm opacity-90">
-              Committed to academic excellence and innovative education since 1985.
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="md:col-span-2">
+            <h3 className="font-bold text-xl mb-3">Andhra University</h3>
+            <p className="text-sm opacity-90 mb-4">
+              Committed to academic excellence and innovative education since 1985. 
+              One of the premier educational institutions in India with a legacy of producing outstanding graduates.
             </p>
+            <div className="flex items-center gap-4 text-sm opacity-80">
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                <span>Visakhapatnam, Andhra Pradesh</span>
+              </div>
+            </div>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Quick Links</h4>
-            <ul className="text-sm space-y-1 opacity-90">
-              <li>• <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">University Website</a></li>
-              <li>• <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Academic Calendar</a></li>
-              <li>• <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Examination Guidelines</a></li>
-              <li>• <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Student Portal</a></li>
+            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <ul className="text-sm space-y-2 opacity-90">
+              <li><a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">University Website</a></li>
+              <li><a href="https://www.andhrauniversity.edu.in/academic" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Academic Calendar</a></li>
+              <li><a href="https://www.andhrauniversity.edu.in/examinations" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Examination Guidelines</a></li>
+              <li><a href="https://www.andhrauniversity.edu.in/student-services" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Student Portal</a></li>
+              <li><a href="https://www.andhrauniversity.edu.in/admissions" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Admissions</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Security & Trust</h4>
-            <div className="flex items-center gap-4">
+            <h4 className="font-semibold mb-4">Contact Support</h4>
+            <div className="space-y-3 text-sm opacity-90">
               <div className="flex items-center gap-2">
-                <Lock className="h-4 w-4" />
-                <span className="text-sm">SSL Secured</span>
+                <Mail className="h-4 w-4" />
+                <span>examinations@andhrauniversity.ac.in</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4" />
-                <span className="text-sm">Data Protected</span>
+                <Phone className="h-4 w-4" />
+                <span>+91 891 2844000</span>
+              </div>
+            </div>
+            
+            <div className="mt-6 pt-4 border-t border-accent-foreground/20">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Lock className="h-4 w-4" />
+                  <span className="text-sm">SSL Secured</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  <span className="text-sm">Data Protected</span>
+                </div>
               </div>
             </div>
           </div>
@@ -42,8 +63,8 @@ const Footer = () => {
             <p className="text-sm opacity-90">
               © 2025 Andhra University. All Rights Reserved.
             </p>
-            <p className="text-sm opacity-90">
-              Website designed and maintained by Andhra University IT Cell
+            <p className="text-sm opacity-80">
+              This is an official examination result portal. For official results, please visit the university website.
             </p>
           </div>
         </div>

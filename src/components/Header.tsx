@@ -26,9 +26,11 @@ const Header = () => {
               </a>
             </div>
           </div>
-          <div className="hidden md:block text-right">
-            <p className="text-sm text-muted-foreground">Official Portal</p>
-            <p className="text-sm font-medium text-accent"><a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Andhra University</a></p>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">University Home</a>
+            <a href="https://www.andhrauniversity.edu.in/examinations" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Examinations</a>
+            <a href="https://www.andhrauniversity.edu.in/results" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Results</a>
+            <a href="https://www.andhrauniversity.edu.in/contact" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
         </div>
       </header>
