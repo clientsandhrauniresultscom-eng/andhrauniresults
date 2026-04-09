@@ -185,10 +185,10 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                       </>
                     ) : (
                       <>
-                        <TableCell className="text-center font-bold border-r border-accent">{result.totalCredits}</TableCell>
+                        <TableCell className="text-center font-bold border-r border-accent">{result.totalCredits || result.subjects.reduce((sum, s) => sum + (s.credits || 0), 0)}</TableCell>
                         <TableCell className="border-r border-accent"></TableCell>
                         <TableCell className="border-r border-accent"></TableCell>
-                        <TableCell className="text-center font-bold">{result.totalGradePoints}</TableCell>
+                        <TableCell className="text-center font-bold">{result.totalGradePoints || result.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0)}</TableCell>
                       </>
                     )}
                   </TableRow>
@@ -196,10 +196,10 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                     <TableRow className="border-accent">
                       <TableCell colSpan={5} className="py-2">
                         <div className="flex justify-between text-sm">
-                          <span>SGPA (SEMESTER GRADE POINT AVERAGE) : <strong>{result.sgpa}</strong></span>
+                          <span>SGPA (SEMESTER GRADE POINT AVERAGE) : <strong>{(result.totalCredits && result.totalGradePoints) ? (result.totalGradePoints / result.totalCredits).toFixed(2) : (result.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0) / result.subjects.reduce((sum, s) => sum + (s.credits || 0), 0)).toFixed(2)}</strong></span>
                         </div>
                         <div className="flex justify-between text-sm mt-1">
-                          <span>CGPA (CUMULATIVE GRADE POINT AVERAGE) : <strong>{result.cgpa}</strong></span>
+                          <span>CGPA (CUMULATIVE GRADE POINT AVERAGE) : <strong>{result.cgpa || '-'}</strong></span>
                         </div>
                       </TableCell>
                     </TableRow>
