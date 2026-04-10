@@ -245,10 +245,9 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                     <img 
                       src={controllerSignature}
                       alt="Controller Signature" 
-                      className="h-12 w-auto mx-auto opacity-90 mix-blend-darken" 
+                      className="h-12 w-auto mx-auto" 
                       style={{
-                        filter: 'contrast(1.4) brightness(0.7) saturate(0.8) hue-rotate(-10deg)',
-                        imageRendering: 'crisp-edges',
+                        imageRendering: 'auto',
                         background: 'transparent'
                       }} 
                     />
