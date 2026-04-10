@@ -40,6 +40,8 @@ interface ResultData {
   examDate?: string;
   totalMarks?: number;
   obtainedMarks?: number;
+  passingMarks?: number;
+  minimumMarks?: number;
   percentage?: number;
 }
 
@@ -125,6 +127,8 @@ const ResultLookup = ({ onResultFound }: ResultLookupProps) => {
         examDate: result.exam_date,
         totalMarks: result.total_marks,
         obtainedMarks: result.obtained_marks,
+        passingMarks: result.passing_marks,
+        minimumMarks: result.minimum_marks,
         percentage: result.percentage
       };
 

@@ -12,7 +12,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      results: {
+        Row: {
+          id: string
+          student_name: string
+          roll_number: string
+          register_number: string | null
+          course: string
+          branch: string | null
+          semester: string
+          year: string
+          result_id: string | null
+          college: string | null
+          subjects: Json | null
+          total_marks: number | null
+          obtained_marks: number | null
+          percentage: number | null
+          passing_marks: number | null
+          minimum_marks: number | null
+          sgpa: number | null
+          cgpa: number | null
+          total_credits: number | null
+          total_grade_points: number | null
+          grade: string | null
+          result: string | null
+          verification_code: string | null
+          exam_date: string | null
+          place: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          student_name: string
+          roll_number: string
+          register_number?: string | null
+          course: string
+          branch?: string | null
+          semester: string
+          year: string
+          result_id?: string | null
+          college?: string | null
+          subjects?: Json | null
+          total_marks?: number | null
+          obtained_marks?: number | null
+          percentage?: number | null
+          passing_marks?: number | null
+          minimum_marks?: number | null
+          sgpa?: number | null
+          cgpa?: number | null
+          total_credits?: number | null
+          total_grade_points?: number | null
+          grade?: string | null
+          result?: string | null
+          verification_code?: string | null
+          exam_date?: string | null
+          place?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          student_name?: string
+          roll_number?: string
+          register_number?: string | null
+          course?: string
+          branch?: string | null
+          semester?: string
+          year?: string
+          result_id?: string | null
+          college?: string | null
+          subjects?: Json | null
+          total_marks?: number | null
+          obtained_marks?: number | null
+          percentage?: number | null
+          passing_marks?: number | null
+          minimum_marks?: number | null
+          sgpa?: number | null
+          cgpa?: number | null
+          total_credits?: number | null
+          total_grade_points?: number | null
+          grade?: string | null
+          result?: string | null
+          verification_code?: string | null
+          exam_date?: string | null
+          place?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

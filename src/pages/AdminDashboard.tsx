@@ -13,6 +13,7 @@ import { toast } from '@/hooks/use-toast';
 import { Plus, Search, LogOut, Trash2, Loader2, Upload, GraduationCap, Pencil, ChevronLeft, ChevronRight, Sparkles, X, TrendingUp } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { smartExtract } from '@/lib/smartOCR';
+import universityLogo from '@/assets/university-logo.png';
 
 interface Result {
   id: string;
@@ -331,11 +332,13 @@ export default function AdminDashboard() {
         year: formData.year,
         result_id: formData.resultId || generateResultId(),
         college: formData.college,
-        subjects: formData.subjects,
+        subjects: formData.subjects as any,
         total_marks: formData.totalMarks,
         obtained_marks: formData.obtainedMarks,
         percentage: formData.percentage,
         result: formData.result,
+        sgpa: formData.sgpa ? parseFloat(formData.sgpa) : null,
+        cgpa: formData.cgpa ? parseFloat(formData.cgpa) : null,
         total_credits: totalCredits,
         total_grade_points: totalGradePoints,
         verification_code: generateVerificationCode(formData.rollNumber, formData.year)
@@ -466,11 +469,13 @@ export default function AdminDashboard() {
         course: formData.course,
         semester: formData.semester,
         year: formData.year,
-        subjects: formData.subjects,
+        subjects: formData.subjects as any,
         total_marks: formData.totalMarks,
         obtained_marks: formData.obtainedMarks,
         percentage: formData.percentage,
         result: formData.result,
+        sgpa: formData.sgpa ? parseFloat(formData.sgpa) : null,
+        cgpa: formData.cgpa ? parseFloat(formData.cgpa) : null,
         total_credits: totalCredits,
         total_grade_points: totalGradePoints
       }).eq('id', editingId);
@@ -548,7 +553,7 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-4">
-            <img src="/lovable-uploads/1985a4f2-89fc-4924-9d69-0b6204adfaf4.png" alt="Logo" className="h-16 w-auto" />
+            <img src={universityLogo} alt="Logo" className="h-16 w-auto" />
             <div>
               <h1 className="text-2xl font-bold text-primary">Andhra University</h1>
               <p className="text-sm text-muted-foreground">Admin Dashboard</p>
@@ -628,6 +633,27 @@ export default function AdminDashboard() {
                           <SelectContent><SelectItem value="marks">Marks Based</SelectItem><SelectItem value="credits">Credit Based (CGPA)</SelectItem></SelectContent>
                         </Select>
                       </div>
+                      
+                      {assessmentType === 'credits' && (
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label>SGPA (Current Semester)</Label>
+                            <Input 
+                              value={formData.sgpa} 
+                              onChange={(e) => setFormData({...formData, sgpa: e.target.value})} 
+                              placeholder="e.g. 8.5"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>CGPA (Overall)</Label>
+                            <Input 
+                              value={formData.cgpa} 
+                              onChange={(e) => setFormData({...formData, cgpa: e.target.value})} 
+                              placeholder="e.g. 8.7"
+                            />
+                          </div>
+                        </div>
+                      )}
                       <div className="border rounded-lg p-4 space-y-4">
                         <div className="flex justify-between items-center"><Label className="text-base font-semibold">Subjects</Label><Button type="button" variant="outline" size="sm" onClick={addSubject}>Add Subject</Button></div>
                         {assessmentType === 'credits' && (
@@ -724,6 +750,8 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2"><Label>Name</Label><Input value={formData.studentName} onChange={(e) => setFormData({...formData, studentName: e.target.value})} required /></div>
                 <div className="space-y-2"><Label>Roll No</Label><Input value={formData.rollNumber} onChange={(e) => setFormData({...formData, rollNumber: e.target.value.toUpperCase()})} required /></div>
+                <div className="space-y-2"><Label>SGPA</Label><Input value={formData.sgpa} onChange={(e) => setFormData({...formData, sgpa: e.target.value})} /></div>
+                <div className="space-y-2"><Label>CGPA</Label><Input value={formData.cgpa} onChange={(e) => setFormData({...formData, cgpa: e.target.value})} /></div>
               </div>
               <div className="flex justify-end gap-2"><Button type="button" variant="outline" onClick={() => setIsEditDialogOpen(false)}>Cancel</Button><Button type="submit" disabled={isSubmitting}>Update</Button></div>
             </form>

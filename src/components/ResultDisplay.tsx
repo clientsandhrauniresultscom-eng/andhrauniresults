@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ArrowLeft, Download, Printer } from "lucide-react";
 import html2pdf from "html2pdf.js";
+import universityLogo from "@/assets/university-logo.png";
+import controllerSignature from "@/assets/controller-signature.png";
 
 interface Subject {
   code: string;
@@ -34,6 +36,10 @@ interface ResultData {
   totalGradePoints?: number;
   place?: string;
   examDate?: string;
+  totalMarks?: number;
+  obtainedMarks?: number;
+  passingMarks?: number;
+  minimumMarks?: number;
 }
 
 interface ResultDisplayProps {
@@ -102,7 +108,7 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
         <Card className="result-card shadow-2xl relative z-10">
           <CardHeader className="text-center border-b border-accent pb-6">
             <div className="flex items-center justify-center gap-6 mb-4">
-              <img src="/lovable-uploads/1985a4f2-89fc-4924-9d69-0b6204adfaf4.png" alt="University Logo" className="h-40 w-auto" style={{marginTop: '8px'}} />
+              <img src={universityLogo} alt="University Logo" className="h-40 w-auto" style={{marginTop: '8px'}} />
               <div className="text-left">
                 <CardTitle className="text-4xl font-bold text-primary tracking-wide">
                   ANDHRA UNIVERSITY
@@ -180,8 +186,8 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                     {result.subjects[0]?.marksAwarded ? (
                       <>
                         <TableCell className="text-center font-bold border-r border-accent">{result.obtainedMarks || result.subjects.reduce((sum, s) => sum + (s.marksAwarded || 0), 0)}</TableCell>
-                        <TableCell className="text-center font-bold border-r border-accent">{result.passingMarks}</TableCell>
-                        <TableCell className="text-center font-bold">{result.totalMarks}</TableCell>
+                        <TableCell className="text-center font-bold border-r border-accent">{result.passingMarks || result.subjects.reduce((sum, s) => sum + (s.passingMinimum || 0), 0)}</TableCell>
+                        <TableCell className="text-center font-bold">{result.totalMarks || result.subjects.reduce((sum, s) => sum + (s.maximumMarks || 0), 0)}</TableCell>
                       </>
                     ) : (
                       <>
@@ -196,7 +202,7 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                     <TableRow className="border-accent">
                       <TableCell colSpan={5} className="py-2">
                         <div className="flex justify-between text-sm">
-                          <span>SGPA (SEMESTER GRADE POINT AVERAGE) : <strong>{(result.totalCredits && result.totalGradePoints) ? (result.totalGradePoints / result.totalCredits).toFixed(2) : (result.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0) / result.subjects.reduce((sum, s) => sum + (s.credits || 0), 0)).toFixed(2)}</strong></span>
+                          <span>SGPA (SEMESTER GRADE POINT AVERAGE) : <strong>{result.sgpa || ((result.totalCredits && result.totalGradePoints) ? (result.totalGradePoints / result.totalCredits).toFixed(2) : (result.subjects.reduce((sum, s) => sum + (s.totalGradePoints || 0), 0) / result.subjects.reduce((sum, s) => sum + (s.credits || 0), 0)).toFixed(2))}</strong></span>
                         </div>
                         <div className="flex justify-between text-sm mt-1">
                           <span>CGPA (CUMULATIVE GRADE POINT AVERAGE) : <strong>{result.cgpa || '-'}</strong></span>
@@ -237,7 +243,7 @@ const ResultDisplay = ({ result, onBack }: ResultDisplayProps) => {
                 <div className="text-center">
                   <div className="mb-2 relative">
                     <img 
-                      src="/lovable-uploads/f973c7f0-6f89-4803-acc0-58cd4f7e89fb.png" 
+                      src={controllerSignature}
                       alt="Controller Signature" 
                       className="h-12 w-auto mx-auto opacity-90 mix-blend-darken" 
                       style={{
