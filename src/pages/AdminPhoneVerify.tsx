@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Fingerprint, CheckCircle, XCircle, Loader2, Shield, AlertCircle } from 'lucide-react';
 import { startAuthentication, startRegistration, browserSupportsWebAuthn, platformAuthenticatorIsAvailable } from '@simplewebauthn/browser';
-
-const SUPABASE_URL = "https://ilzfloclszaqiluqguep.supabase.co";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '@/integrations/supabase/client';
 const RP_ID = "andhrauniresults.com";
 const RP_NAME = "Andhra University Results";
 
@@ -33,7 +32,7 @@ export default function AdminPhoneVerify() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+        'apikey': SUPABASE_ANON_KEY,
       },
       body: JSON.stringify({ challengeId, token }),
     });
@@ -46,7 +45,7 @@ export default function AdminPhoneVerify() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+        'apikey': SUPABASE_ANON_KEY,
       },
       body: JSON.stringify({ challengeId, credential, isEnrollment }),
     });
@@ -91,7 +90,8 @@ export default function AdminPhoneVerify() {
         `${SUPABASE_URL}/rest/v1/admin_webauthn_credentials?select=id`,
         {
           headers: {
-            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
           }
         }
       );

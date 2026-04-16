@@ -41,7 +41,8 @@ export default function AdminLogin() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
         },
       });
       
@@ -79,8 +80,8 @@ export default function AdminLogin() {
     try {
       const response = await fetch(`${SUPABASE_URL}/rest/v1/admin_auth_challenges?id=eq.${challengeId}&select=status`, {
         headers: {
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
         },
       });
       
@@ -118,7 +119,8 @@ export default function AdminLogin() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsemZsb2Nsc3phcWlsdXFndWVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NDY4MjksImV4cCI6MjA5MTMyMjgyOX0.2P5s3gNd5WMBSRQt9oYDzDfz1rf_u_vdf1fkklS3gX0',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
         },
         body: JSON.stringify({ password }),
       });
