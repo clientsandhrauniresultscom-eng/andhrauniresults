@@ -7,13 +7,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Shield, Eye, EyeOff, QrCode, Smartphone, RefreshCw, AlertCircle } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase, SUPABASE_URL, SUPABASE_ANON_KEY } from '@/integrations/supabase/client';
 
-const SUPABASE_URL = "https://ilzfloclszaqiluqguep.supabase.co";
+const SUPABASE_KEY = SUPABASE_ANON_KEY;
 const POLL_INTERVAL = 2000; // 2 seconds
 
 export default function AdminLogin() {
-  const [mode, setMode] = useState<'qr' | 'password'>('password');
+  const [mode, setMode] = useState<'qr' | 'password'>('qr');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
