@@ -114,31 +114,13 @@ export default function AdminLogin() {
     e.preventDefault();
     setError('');
 
-    try {
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/verify-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-        },
-        body: JSON.stringify({ password }),
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        localStorage.setItem('admin_auth', 'true');
-        navigate('/admin');
-      } else {
-        setError(data.error || 'Invalid password');
-      }
-    } catch (err) {
-      if (login(password)) {
-        navigate('/admin');
-      } else {
-        setError('Invalid password');
-      }
+    const correctPassword = "admins@andhrauniresults.online@2025#";
+    
+    if (password === correctPassword) {
+      localStorage.setItem('admin_auth', 'true');
+      navigate('/admin');
+    } else {
+      setError('Invalid password');
     }
   };
 
