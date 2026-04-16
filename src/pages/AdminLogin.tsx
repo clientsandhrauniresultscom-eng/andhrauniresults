@@ -13,7 +13,7 @@ const SUPABASE_URL = "https://ilzfloclszaqiluqguep.supabase.co";
 const POLL_INTERVAL = 2000; // 2 seconds
 
 export default function AdminLogin() {
-  const [mode, setMode] = useState<'qr' | 'password'>('qr');
+  const [mode, setMode] = useState<'qr' | 'password'>('password');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
@@ -31,7 +31,13 @@ export default function AdminLogin() {
   const generateChallenge = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/generate-qr`, {
+      setError('');
+      
+      // Use the function URL directly
+      const functionUrl = `${SUPABASE_URL}/functions/v1/generate-qr`;
+      console.log('Calling function:', functionUrl);
+      
+      const response = await fetch(functionUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +45,17 @@ export default function AdminLogin() {
         },
       });
       
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errText = await response.text();
+        console.error('Function error:', errText);
+        setError('Function error: ' + response.status);
+        return;
+      }
+      
       const data = await response.json();
+      console.log('Response data:', data);
       
       if (data.success) {
         setQrUrl(data.qrUrl);
