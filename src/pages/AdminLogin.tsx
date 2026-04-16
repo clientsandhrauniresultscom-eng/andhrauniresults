@@ -13,7 +13,7 @@ const SUPABASE_KEY = SUPABASE_ANON_KEY;
 const POLL_INTERVAL = 2000; // 2 seconds
 
 export default function AdminLogin() {
-  const [mode, setMode] = useState<'qr' | 'password'>('password');
+  const [mode, setMode] = useState<'qr' | 'password'>('qr');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
