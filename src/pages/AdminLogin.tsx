@@ -113,14 +113,19 @@ export default function AdminLogin() {
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
 
     const correctPassword = "admins@andhrauniresults.online@2025#";
     
     if (password === correctPassword) {
       localStorage.setItem('admin_auth', 'true');
-      navigate('/admin');
+      // Small delay to ensure state is set
+      setTimeout(() => {
+        navigate('/admin');
+      }, 100);
     } else {
       setError('Invalid password');
+      setIsLoading(false);
     }
   };
 
