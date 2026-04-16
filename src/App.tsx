@@ -7,6 +7,7 @@ import { AdminProvider } from "@/hooks/useAdmin";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
+import AdminPhoneVerify from "./pages/AdminPhoneVerify";
 import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/verify" element={<AdminPhoneVerify />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

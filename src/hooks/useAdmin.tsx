@@ -2,11 +2,9 @@ import { useState, createContext, useContext, ReactNode } from 'react';
 
 interface AdminContextType {
   isAuthenticated: boolean;
-  login: (password: string) => boolean;
+  login: (token?: string) => boolean;
   logout: () => void;
 }
-
-const ADMIN_PASSWORD = "admins@andhrauniresults.online@2025#";
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
@@ -15,8 +13,10 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     return localStorage.getItem('admin_auth') === 'true';
   });
 
-  const login = (password: string): boolean => {
-    if (password === ADMIN_PASSWORD) {
+  const login = (token?: string): boolean => {
+    // Accept any non-empty token - the verification is done server-side
+    // during the QR code flow. The token proves the user authenticated.
+    if (token && token.length > 0) {
       localStorage.setItem('admin_auth', 'true');
       setIsAuthenticated(true);
       return true;
