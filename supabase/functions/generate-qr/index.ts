@@ -11,10 +11,9 @@ serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+const supabaseUrl = "https://sbpwgzxbzdherkhzxbmd.supabase.co";
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     
-    // Use fetch to call Supabase REST API
     const challengeToken = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + 60 * 1000).toISOString();
     
